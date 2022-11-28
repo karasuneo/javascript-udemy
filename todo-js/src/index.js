@@ -3,13 +3,23 @@ const onClickAdd = () => {
   const inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
 
+  createIncomponentList(inputText);
+};
+
+// 未完了リストから指定の要素を削除
+const deleteFromIncomponentList = (target) => {
+  document.getElementById("incomplete-list").removeChild(target);
+};
+
+// 未完了リストに追加する関数
+const createIncomponentList = (text) => {
   // div生成
   const div = document.createElement("div");
   div.className = "list-row";
 
   // liタグ生成
   const li = document.createElement("li");
-  li.innerText = inputText;
+  li.innerText = text;
 
   // button(完了)タグの作成
   const completeButton = document.createElement("button");
@@ -23,8 +33,8 @@ const onClickAdd = () => {
     // 押された削除ボタンの親タグを未完了リストから削除
     deleteFromIncomponentList(completeTarget);
 
+    // liタグの中身を取得
     const text = completeTarget.firstElementChild.innerText;
-    console.log(text);
 
     // div以下を初期化
     completeTarget.textContent = null;
@@ -34,17 +44,24 @@ const onClickAdd = () => {
     li.innerText = text;
 
     //戻るボタンの作成
-    const returnButton = document.createElement("button");
-    returnButton.innerText = "戻す";
+    const backButton = document.createElement("button");
+    backButton.innerText = "戻す";
+
+    //戻るボタンを押した時
+    backButton.addEventListener("click", () => {
+      const deleteTarget = backButton.parentNode;
+      // 要素の削除
+      document.getElementById("complete-list").removeChild(deleteTarget);
+
+      // テキストの取得
+      const text = backButton.parentNode.firstElementChild.innerText;
+      createIncomponentList(text);
+    });
 
     // 要素を追加
     completeTarget.appendChild(li);
-    completeTarget.appendChild(returnButton);
-
-    // 完了したTODOに要素を追加
+    completeTarget.appendChild(backButton);
     document.getElementById("complete-list").appendChild(completeTarget);
-
-    //
   });
 
   // button(削除)タグの作成
@@ -66,10 +83,6 @@ const onClickAdd = () => {
   document.getElementById("incomplete-list").appendChild(div);
 };
 
-// 未完了リストから指定の要素を削除
-const deleteFromIncomponentList = (target) => {
-  document.getElementById("incomplete-list").removeChild(target);
-};
 document
   .getElementById("add-button")
   .addEventListener("click", () => onClickAdd());
