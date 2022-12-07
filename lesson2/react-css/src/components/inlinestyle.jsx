@@ -8,6 +8,7 @@ export const InlineStyle = () => {
     justifyContent: "space-around",
     alignItens: "center",
   };
+
   const titleStyle = {
     margin: 0,
     color: "#3d84a8",
