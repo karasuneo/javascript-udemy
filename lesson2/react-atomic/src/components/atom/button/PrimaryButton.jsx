@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BaseButton } from "./BaseButton"; 
+import { BaseButton } from "./BaseButton";
 
 export const PrimaryButton = (props) => {
   const { children } = props;
@@ -7,5 +7,4 @@ export const PrimaryButton = (props) => {
 };
 
 const SButton = styled(BaseButton)`
-  
-`;
+background-color: #40514e`;

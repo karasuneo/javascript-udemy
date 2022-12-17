@@ -1,15 +1,8 @@
-import './App.css';
-import { PrimaryButton } from './components/atom/button/PrimaryButton';
-import { SecondaryButton } from './components/atom/button/SecondaryButton';
+import "./App.css";
+import { Router } from "./router/Router";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-      <PrimaryButton>テスト</PrimaryButton>
-      <SecondaryButton>検索</SecondaryButton>
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;
