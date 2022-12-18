@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 
 const users = [...Array(10).keys()].map((val) => {
   return {
     id: val,
-    name: "ゆう-${val}",
+    name: `ゆう${val}`,
     image: "https://source.unsplash.com/NEOXGVKTmcA",
     email: "11111@aaa.com",
     phone: "222-222-333",
@@ -17,6 +18,8 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
+  // const { state } = useLocation();
+  // console.log(state);
   return (
     <SContainer>
       <SearchInput />
