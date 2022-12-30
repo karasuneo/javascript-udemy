@@ -1,13 +1,15 @@
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
 
-import './App.css';
-import { Button, ChakraProvider } from '@chakra-ui/react';
+import theme from "./theme/theme";
+import { Router } from "./router/Router";
 
-function App() {
+export default function App() {
   return (
-    <ChakraProvider>
-      <Button>vsdv</Button>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </ChakraProvider>
   );
 }
-
-export default App;
